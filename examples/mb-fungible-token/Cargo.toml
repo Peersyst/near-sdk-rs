@@ -1,8 +1,16 @@
 [package]
-name = "mb-token-wrapper"
-version = "0.0.2"
+name = "mb-fungible-token"
+version = "0.0.1"
 authors = ["Near Inc <hello@nearprotocol.com>"]
 edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+near-sdk = { path = "../../near-sdk" }
+near-contract-standards = { path = "../../near-contract-standards" }
+schemars = "0.8"
 
 [dev-dependencies]
 anyhow = "1.0"
@@ -13,10 +21,6 @@ near-units = "0.2.0"
 serde_json = "1.0"
 tokio = { version = "1.14", features = ["full"] }
 workspaces = "0.7.0"
-
-# remember to include a line for each contract
-mb-fungible-token = { path = "./ft" }
-defi = { path = "./test-contract-defi" }
 
 [profile.release]
 codegen-units = 1
@@ -29,7 +33,4 @@ overflow-checks = true
 
 [workspace]
 # remember to include a member for each contract
-members = [
-  "ft",
-  "test-contract-defi",
-]
+members = []
